@@ -4,6 +4,7 @@
     --accent-color: #EEEEEE;
     --dark-color: #1D1616;
     --page-padding: 12px 5%;
+    --primary-rgb: 216, 64, 64;
   }
 
   @font-face {

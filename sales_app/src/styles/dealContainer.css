@@ -1,0 +1,10 @@
+@import url(./globals.css);
+
+.dealCard {
+    margin: 16px;
+    padding: 20px 54px;
+    border: 2px solid var(--primary-color);
+    background-color: rgba(var(--primary-rgb), 0.15);
+    width: fit-content;
+    border-radius: 12px;
+}
