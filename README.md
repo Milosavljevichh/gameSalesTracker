@@ -1,4 +1,4 @@
-# **📌 Project Plan Template: Steam Sales Web App**  
+# **📌 Project Plan: Steam Sales Web App**  
 *Version: 1.0*  
 *Last Updated: 17/2/2025*  
 

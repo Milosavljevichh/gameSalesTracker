@@ -1,10 +1,15 @@
 :root {
-    --primary-color: #D84040;
-    --secondary-color: #8E1616;
-    --accent-color: #EEEEEE;
-    --dark-color: #1D1616;
+    --primary-color: #24211C;
+    --secondary-color: #A5845B;
+    --accent-color: #FEFEFE;
+    --light-color: #CCC2B6;
+    --bg-color: #24211C;
     --page-padding: 12px 5%;
     --primary-rgb: 216, 64, 64;
+    --red-primary-color: #D84040;
+    --red-secondary-color: #8E1616;
+    --red-accent-color: #EEEEEE;
+    --red-dark-color: #1D1616;
   }
 
   @font-face {
