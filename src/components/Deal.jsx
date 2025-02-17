@@ -1,5 +1,3 @@
-import placeholder from './../assets/images/placholder.jpg'
-
 function Deal({title, ratingText, thumb}) {
     return (
         <div className='dealCard'>

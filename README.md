@@ -1,7 +1,3 @@
-Here’s a **comprehensive project plan template** for your **Steam Sales Web App**, covering everything from planning to deployment.  
-
----
-
 # **📌 Project Plan Template: Steam Sales Web App**  
 *Version: 1.0*  
 *Last Updated: 17/2/2025*  
@@ -46,6 +42,7 @@ A web app that allows users to search for Steam games on sale, filter by discoun
 ➕ Allow users to favorite games  
 ➕ Show historical price trends (if Steam API is used)  
 ➕ Notify users when a game goes on sale  
+➕ UI themes
 
 ---
 
