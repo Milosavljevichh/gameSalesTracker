@@ -28,7 +28,7 @@ function DealContainer() {
     return (
         <div id='dealContainer'>
             <h1>Discover all current steam deals</h1>
-            <Deal title={dummyObj.title} ratingText={dummyObj.steamRatingText} thumb={dummyObj.thumb} />
+            <Deal title={dummyObj.title} ratingText={dummyObj.steamRatingText} thumb={dummyObj.thumb} savings={dummyObj.savings} salePrice={dummyObj.salePrice} originalPrice={dummyObj.normalPrice} ratingCount={dummyObj.steamRatingCount} />
         </div>
     )
 }
