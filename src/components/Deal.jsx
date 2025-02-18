@@ -1,8 +1,13 @@
 function Deal({title, ratingText, thumb, savings, salePrice, originalPrice,ratingCount}) {
+
+    let thumbnailSize = "/header.jpg"
+    let pos = thumb.lastIndexOf("/")
+    thumb = thumb.slice(0, pos) + thumbnailSize
+    
     return (
         <article className='dealCard'>
             <img src={thumb} alt="deal thumbnail" />
-            <h2 className="marginTop">{title}</h2>
+            <h2 className="marginTop title">{title}</h2>
             <div className="flexContainer justifyBetween marginTop">
                 <div>
                     <p>Steam Rating: <span className="accentColor">{ratingText}</span> </p>
