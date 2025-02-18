@@ -1,7 +1,10 @@
 import "./../styles/header.css"
+import FilterHeader from "./FilterHeader";
 
-function Header () {
+function Header ({changeFilter}) {
+
     return (
+        <>
         <header>
             <h1>Sales Tracker</h1>
             <div className="flexContainer">
@@ -12,6 +15,8 @@ function Header () {
                 </div>
             </div>
         </header>
+        <FilterHeader changeFilter={changeFilter} /> 
+    </>
     )
 }
 

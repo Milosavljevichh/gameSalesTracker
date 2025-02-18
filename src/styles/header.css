@@ -1,6 +1,6 @@
 @import url(./globals.css);
 
-header {
+header, .header {
     padding: var(--page-padding);
     display: flex;
     align-items: center;

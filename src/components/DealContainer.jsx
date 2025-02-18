@@ -2,7 +2,7 @@ import Deal from './Deal'
 import "../styles/dealContainer.css"
 import { useState, useEffect } from 'react';
 
-function DealContainer() {
+function DealContainer({apiCall}) {
   const [deals, setDeals] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -13,7 +13,7 @@ function DealContainer() {
   };
 
   useEffect(() => {
-    fetch("https://www.cheapshark.com/api/1.0/deals?storeID=1&lowerPrice=0", requestOptions)
+    fetch(apiCall, requestOptions)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch deals");
@@ -22,14 +22,14 @@ function DealContainer() {
       })
       .then((data) => {
         const filteredDeals = data.filter(deal => parseFloat(deal.savings) >= 80);
-        setDeals(filteredDeals);
+        setDeals(data);
         setLoading(false);
       })
       .catch((error) => {
         setError(error.message);
         setLoading(false);
       });
-  }, []);
+  }, [apiCall]);
 
   if (loading) return <p>Loading deals...</p>;
   if (error) return <p>Error: {error}</p>;
