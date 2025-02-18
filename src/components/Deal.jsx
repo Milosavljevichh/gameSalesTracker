@@ -1,12 +1,20 @@
-function Deal({title, ratingText, thumb, savings, salePrice, originalPrice,ratingCount}) {
+function Deal({dealID, title, ratingText, thumb, savings, salePrice, originalPrice,ratingCount, storeId}) {
 
-    let thumbnailSize = "/header.jpg"
-    let pos = thumb.lastIndexOf("/")
-    thumb = thumb.slice(0, pos) + thumbnailSize
+    let steamId = "1"
+    
+    let newThumb = storeId == steamId
+        ? resizeThumb(thumb.lastIndexOf("/"), "/header.jpg")
+        : thumb; 
+
+    function resizeThumb(pos, size) {
+        return thumb.slice(0, pos) + size
+    }
     
     return (
+        
         <article className='dealCard'>
-            <img src={thumb} alt="deal thumbnail" />
+            <a href={`https://www.cheapshark.com/redirect?dealID=${dealID}`} target='blank'>
+            <img src={newThumb} alt={title} onError={(e) => e.target.src = thumb}  />
             <h2 className="marginTop title">{title}</h2>
             <div className="flexContainer justifyBetween marginTop">
                 <div>
@@ -19,6 +27,7 @@ function Deal({title, ratingText, thumb, savings, salePrice, originalPrice,ratin
                     <h5 className="originalPrice">{originalPrice}$</h5>
                 </div>
             </div>
+            </a>
         </article>
     )
 }
