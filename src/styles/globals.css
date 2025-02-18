@@ -28,6 +28,10 @@
     border: var(--accent-color) 1px solid;
     border-radius: 8px;
   }
+
+  button:hover{
+    cursor: pointer;
+  }
   
   .flexContainer {
     display: flex;
