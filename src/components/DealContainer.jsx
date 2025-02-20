@@ -13,6 +13,7 @@ function DealContainer({apiCall}) {
   };
 
   useEffect(() => {
+    setLoading(true)
     fetch(apiCall, requestOptions)
       .then((response) => {
         if (!response.ok) {

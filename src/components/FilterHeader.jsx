@@ -14,10 +14,9 @@ function FilterHeader({changeFilter}) {
             </div>
             <div>
                 <label htmlFor="filterOrder">Filter by: </label>
-                <select name="filterOrder" id="filterOrder">
-                    <option value="0">None</option>
-                    <option value="1">Ascending</option>
-                    <option value="2">Descending</option>
+                <select name="filterOrder" id="filterOrder" onChange={(e) => changeFilter(e.target.value)}>
+                    <option value="Asc">Ascending</option>
+                    <option value="Desc">Descending</option>
                 </select>
             </div>
         </div>

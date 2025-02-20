@@ -6,18 +6,14 @@ function Header ({changeFilter}) {
 
     const [showFilters, setShowFilters] = useState(false)
 
-    function toggleFilter() {
-        setShowFilters(!showFilters)
-    }
-
     return (
         <>
         <header>
             <h1>Sales Tracker</h1>
             <div className="flexContainer">
-                <button className="mediumFont" onClick={() => toggleFilter()}>Filter</button>
+                <button className="mediumFont" onClick={() => setShowFilters(!showFilters)}>Filter</button>
                 <div>
-                    <input type="checkbox" name="onSale" id="onSale" />
+                    <input type="checkbox" name="onSale" id="onSale" defaultChecked onChange={(e) => (changeFilter("sale"))} />
                     <label className="mediumFont" htmlFor="onSale">On Sale</label>
                 </div>
             </div>

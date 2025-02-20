@@ -45,6 +45,8 @@
 
 .dealCard img {
     border-radius: 8px;
+    max-width: 600px;
+    max-height: 281px;
 }
 
 .title{
