@@ -5,25 +5,26 @@ import DealContainer from "./DealContainer";
 function App() {
     
     const defaultApiCall = `https://www.cheapshark.com/api/1.0/deals?storeID=1&lowerPrice=0`
+    const validFilterTypes = {
+        "Savings": "Savings",
+        "Price": "Price",
+        "Reviews": "Reviews"
+    }
 
     const validFilterSort = {
         "Asc": "0",
         "Desc": "1",
     }
     
-    const [appliedFilters, setappliedFilters] = useState({
-        "Savings": false,
-        "Price": false,
-        "Reviews": false
-    });
+    const [filterBy, setFilterBy] = useState("");
     const [filterSort, setFilterSort] = useState("&desc=0");
     const [isOnSale, setIsOnSale] = useState(true)
 
     function changeFilter (filter) {
-        
-        if (appliedFilters.hasOwnProperty(filter)) {
-            let newObj = {...appliedFilters, [filter]: !appliedFilters[filter]}
-            setappliedFilters(newObj);
+        console.log(filter)
+        if (validFilterTypes.hasOwnProperty(filter)) {
+            let str = "&sortBy="+filter;
+            setFilterBy(str);
         }
 
         if (validFilterSort.hasOwnProperty(filter)) {
@@ -37,15 +38,8 @@ function App() {
     }
 
     function createApiCall() {
-        let filters = ""
         let onSaleParam = isOnSale ? "&onSale=1" : "&onSale=0";
-        
-        for (const [key, value] of Object.entries(appliedFilters)) {
-            console.log(`${key}: ${value}`);
-            if (value) filters += "&sortBy="+key
-          }
-
-        return defaultApiCall + onSaleParam + filters + filterSort 
+        return defaultApiCall + onSaleParam + filterBy + filterSort 
     }
     
     return (

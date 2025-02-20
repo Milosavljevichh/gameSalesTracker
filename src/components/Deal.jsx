@@ -1,9 +1,9 @@
-function Deal({dealID, title, ratingText, thumb, savings, salePrice, originalPrice,ratingCount, storeId}) {
+function Deal({dealID, title, ratingText, thumb, savings, salePrice, originalPrice,ratingCount, storeId, storeLogo}) {
 
     let steamId = "1"
     
     let newThumb = storeId == steamId
-        ? resizeThumb(thumb.lastIndexOf("/"), "/header.jpg")
+        ? resizeThumb(thumb.lastIndexOf("/"), "/capsule_467x181.jpg")
         : thumb; 
 
     function resizeThumb(pos, size) {
@@ -14,19 +14,31 @@ function Deal({dealID, title, ratingText, thumb, savings, salePrice, originalPri
         
         <article className='dealCard'>
             <a href={`https://www.cheapshark.com/redirect?dealID=${dealID}`} target='blank'>
-            <img src={newThumb} alt={title} onError={(e) => e.target.src = thumb}  />
+
+            
             <div className="cardContent">
-                <div>
+                <img src={newThumb} alt={title} onError={(e) => e.target.src = thumb} className="thumb"  />
+                <div className="textContent">
                     <h2 className="marginTop title">{title}</h2>
-                    <p>Steam Rating: <span className="accentColor">{ratingText}</span> </p>
-                    <p>Rating Count: <span className="accentColor">{ratingCount}</span></p>
-                </div>
-                <div className="flexContainer justifyBetween marginTop">
+
+                <div className="idkContainer">
+                    <div>
+                        <p>Steam Rating:  </p>
+                        <p>Rating Count: </p>
+                    </div>
+                    <div>
+                        <p className="accentColor">{ratingText ? ratingText : "Not Available"}</p>
+                        <p className="accentColor">{ratingCount}</p>
+                    </div>
                     <div className="tag">
                         <h2 className="saleTag">-{Math.trunc(savings)}%</h2>
                         <h3 className="priceTag">{salePrice}$</h3>
                         <h5 className="originalPrice">{originalPrice}$</h5>
                     </div>
+                    <img className="logo" src={"https://www.cheapshark.com"+storeLogo} alt="store" />
+                </div>
+
+
                 </div>
             </div>
             </a>
