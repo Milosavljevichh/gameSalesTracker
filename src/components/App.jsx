@@ -4,7 +4,7 @@ import DealContainer from "./DealContainer";
 
 function App() {
     
-    const defaultApiCall = `https://www.cheapshark.com/api/1.0/deals?storeID=1&lowerPrice=0`
+    const defaultApiCall = `https://www.cheapshark.com/api/1.0/deals?storeID=1&lowerPrice=0&sortBy=Savings`
     const validFilterTypes = {
         "0": "",
         "Savings": "Savings",
