@@ -4,12 +4,16 @@ function FilterHeader({changeFilter}) {
     return (
         <div className="header">
             <div>
-                <label htmlFor="filterBy">Filter by: </label>
-                <select name="filterBy" id="filterBy" onChange={(e) => changeFilter(e.target.value)}>
-                    <option value="Savings">Sale</option>
-                    <option value="Price">Price</option>
-                    <option value="Reviews">Reviews</option>
-                </select>
+                <input type="radio" radioGroup="filters" name="filters" id="savings" value={"Savings"} onChange={(e) => (changeFilter(e.target.value))} />
+                <label className="mediumFont" htmlFor="savings">Sale</label>
+            </div>
+            <div>
+                <input type="radio" radioGroup="filters" name="filters" id="price" value={"Price"} onChange={(e) => (changeFilter(e.target.value))} />
+                <label className="mediumFont" htmlFor="price">Price</label>
+            </div>
+            <div>
+                <input type="radio" radioGroup="filters" name="filters" id="reviews" value={"Reviews"} onChange={(e) => (changeFilter(e.target.value))} />
+                <label className="mediumFont" htmlFor="reviews">Reviews</label>
             </div>
             <div>
                 <label htmlFor="filterOrder">Filter by: </label>

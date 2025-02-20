@@ -3,7 +3,7 @@ function Deal({dealID, title, ratingText, thumb, savings, salePrice, originalPri
     let steamId = "1"
     
     let newThumb = storeId == steamId
-        ? resizeThumb(thumb.lastIndexOf("/"), "/capsule_467x181.jpg")
+        ? resizeThumb(thumb.lastIndexOf("/"), "/header.jpg")
         : thumb; 
 
     function resizeThumb(pos, size) {
