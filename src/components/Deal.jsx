@@ -15,12 +15,12 @@ function Deal({dealID, title, ratingText, thumb, savings, salePrice, originalPri
         <article className='dealCard'>
             <a href={`https://www.cheapshark.com/redirect?dealID=${dealID}`} target='blank'>
             <img src={newThumb} alt={title} onError={(e) => e.target.src = thumb}  />
-            <h2 className="marginTop title">{title}</h2>
+            <div>
+                <h2 className="marginTop title">{title}</h2>
+                <p>Steam Rating: <span className="accentColor">{ratingText}</span> </p>
+                <p>Rating Count: <span className="accentColor">{ratingCount}</span></p>
+            </div>
             <div className="flexContainer justifyBetween marginTop">
-                <div>
-                    <p>Steam Rating: <span className="accentColor">{ratingText}</span> </p>
-                    <p>Rating Count: <span className="accentColor">{ratingCount}</span></p>
-                </div>
                 <div className="tag">
                     <h2 className="saleTag">-{Math.trunc(savings)}%</h2>
                     <h3 className="priceTag">{salePrice}$</h3>
