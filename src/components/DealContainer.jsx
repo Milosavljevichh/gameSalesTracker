@@ -2,7 +2,7 @@ import Deal from './Deal'
 import "../styles/dealContainer.css"
 import { useState, useEffect } from 'react';
 
-function DealContainer({apiCall}) {
+function DealContainer({apiCall, changePage, pageNum}) {
   const [deals, setDeals] = useState([]);
   const [stores, setStores] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -55,7 +55,14 @@ function DealContainer({apiCall}) {
 
     return (
         <div id='dealContainer'>
-            <h1>Discover all current steam deals</h1>
+            <div className='flexContainer justifyBetween'>
+              <h1>Discover all current steam deals</h1>
+              <div>
+                <button onClick={()=>(changePage(-1))}>-</button>
+                <span>{pageNum}</span>
+                <button onClick={()=>(changePage(1))}>+</button>
+              </div>
+            </div>
             <div id="deals">
                 {deals.map((deal)=>(
                     <Deal 
@@ -73,6 +80,11 @@ function DealContainer({apiCall}) {
                     />
                 ))}
             </div>
+              <div>
+                <button onClick={()=>(changePage(-1))}>-</button>
+                <span>{pageNum}</span>
+                <button onClick={()=>(changePage(1))}>+</button>
+              </div>
         </div>
     )
 }

@@ -4,7 +4,7 @@ function FilterHeader({changeFilter}) {
     return (
         <div className="header">
             <div>
-                <input type="radio" radioGroup="filters" name="filters" id="savings" value={"Savings"} onChange={(e) => (changeFilter(e.target.value))} />
+                <input defaultChecked type="radio" radioGroup="filters" name="filters" id="savings" value={"Savings"} onChange={(e) => (changeFilter(e.target.value))} />
                 <label className="mediumFont" htmlFor="savings">Sale</label>
             </div>
             <div>
