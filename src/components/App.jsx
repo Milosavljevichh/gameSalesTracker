@@ -4,7 +4,7 @@ import DealContainer from "./DealContainer";
 
 function App() {
     
-    const defaultApiCall = `https://www.cheapshark.com/api/1.0/deals?storeID=1&pageSize=30&lowerPrice=0&sortBy=Savings`
+    const defaultApiCall = `https://www.cheapshark.com/api/1.0/deals?storeID=1&pageSize=25&lowerPrice=0`
     const validFilterTypes = {
         "Savings": "Savings",
         "Price": "Price",
@@ -16,7 +16,7 @@ function App() {
         "Desc": "1",
     }
     
-    const [filterBy, setFilterBy] = useState("Savings");
+    const [filterBy, setFilterBy] = useState("&sortBy=Savings");
     const [filterSort, setFilterSort] = useState("&desc=0");
     const [isOnSale, setIsOnSale] = useState(true)
     const [currentPage, setCurrentPage] = useState(0)
@@ -36,6 +36,7 @@ function App() {
 
         if (filter === "sale") {
             setIsOnSale(!isOnSale)
+            setCurrentPage(0)
         }
     }
 

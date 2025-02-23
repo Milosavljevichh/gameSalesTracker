@@ -36,11 +36,8 @@ function DealContainer({apiCall, changePage, pageNum}) {
           return response.json();
         })
         .then((data) => {
-          // data.forEach((store) => {
-          //   if (store.storeID === deals.storeId)
-          // })
           setStores(data)
-          setLoading(false);
+          setLoading(false)
         })
         .catch((error) => {
           setError(error.message);
@@ -50,7 +47,7 @@ function DealContainer({apiCall, changePage, pageNum}) {
   }, [apiCall]);
 
 
-  if (loading) return <p>Loading deals...</p>;
+  if (loading) return <div className="loader"></div>;
   if (error) return <p>Error: {error}</p>;
 
     return (
@@ -58,9 +55,9 @@ function DealContainer({apiCall, changePage, pageNum}) {
             <div className='flexContainer justifyBetween'>
               <h1>Discover all current steam deals</h1>
               <div>
-                <button onClick={()=>(changePage(-1))}>-</button>
+                <button className='pageBtn' onClick={()=>(changePage(-1))}>&#8592;</button>
                 <span>{pageNum}</span>
-                <button onClick={()=>(changePage(1))}>+</button>
+                <button className='pageBtn' onClick={()=>(changePage(1))}>&#8594;</button>
               </div>
             </div>
             <div id="deals">
@@ -80,11 +77,11 @@ function DealContainer({apiCall, changePage, pageNum}) {
                     />
                 ))}
             </div>
-              <div>
-                <button onClick={()=>(changePage(-1))}>-</button>
-                <span>{pageNum}</span>
-                <button onClick={()=>(changePage(1))}>+</button>
-              </div>
+            <div className='marginTop marginBottom flexContainer'>
+              <button className='pageBtn' onClick={()=>(changePage(-1))}>&#8592;</button>
+              <span>{pageNum}</span>
+              <button className='pageBtn' onClick={()=>(changePage(1))}>&#8594;</button>
+            </div>
         </div>
     )
 }

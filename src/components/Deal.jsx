@@ -17,7 +17,7 @@ function Deal({dealID, title, ratingText, thumb, savings, salePrice, originalPri
 
             
             <div className="cardContent">
-                <img src={newThumb} alt={title} onError={(e) => e.target.src = thumb} className="thumb"  />
+                <img src={newThumb} alt={title} onError={(e) => e.target.src = thumb} className="thumb" loading="lazy"  />
                 <div className="textContent">
                     <h2 className="marginTop title">{title}</h2>
 

@@ -48,6 +48,10 @@
     
     margin-top: 16px;
   }
+  .marginBottom{
+    
+    margin-bottom: 16px;
+  }
 
   .accentColor{
     color: #ffbe74;

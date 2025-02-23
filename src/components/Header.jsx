@@ -10,6 +10,7 @@ function Header ({changeFilter}) {
         <>
         <header>
             <h1>Sales Tracker</h1>
+            <input type="search" id="titleSearch" placeholder="Search title..." />
             <div className="flexContainer">
                 <button className="mediumFont" onClick={() => setShowFilters(!showFilters)}>Filter</button>
                 <div>

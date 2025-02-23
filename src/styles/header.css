@@ -18,3 +18,15 @@ header, .header {
   #onSale {
     margin: 0 5px;
   }
+
+  #titleSearch {
+    padding-left: 10px;
+    background-color: #2a2a2a52;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    font-size: large;
+  }
+
+  #titleSearch::placeholder {
+    color: #ffffff98;
+  }
