@@ -4,7 +4,9 @@ import DealContainer from "./DealContainer";
 
 function App() {
     
-    const defaultApiCall = `https://www.cheapshark.com/api/1.0/deals?storeID=1&pageSize=25&lowerPrice=0`
+    const defaultApiCall = `https://www.cheapshark.com/api/1.0/`
+    const dealsLink = "deals?storeID=1&pageSize=25&lowerPrice=0"
+
     const validFilterTypes = {
         "Savings": "Savings",
         "Price": "Price",
@@ -20,6 +22,7 @@ function App() {
     const [filterSort, setFilterSort] = useState("&desc=0");
     const [isOnSale, setIsOnSale] = useState(true)
     const [currentPage, setCurrentPage] = useState(0)
+    const [searchTerm, setSearchTerm] = useState("")
 
     function changeFilter (filter) {
         
@@ -47,12 +50,20 @@ function App() {
 
     function createApiCall() {
         let onSaleParam = isOnSale ? "&onSale=1" : "&onSale=0";
-        return defaultApiCall + onSaleParam + filterBy + filterSort  +  "&pageNumber=" +    currentPage
+        if(!searchTerm) {
+            return defaultApiCall + dealsLink + onSaleParam + filterBy + filterSort  +  "&pageNumber=" +    currentPage
+        } else {
+            return defaultApiCall + "games?title=" + searchTerm
+        }
+    }
+
+    function handleSearch(term) {
+        setSearchTerm(term);
     }
     
     return (
         <>
-            <Header changeFilter={changeFilter} />
+            <Header changeFilter={changeFilter} handleSearch={handleSearch} />
             <main>
                 <DealContainer apiCall={createApiCall()} changePage={changePage} pageNum={currentPage} />
             </main>

@@ -1,6 +1,7 @@
 import Deal from './Deal'
 import "../styles/dealContainer.css"
 import { useState, useEffect } from 'react';
+import Game from './Game';
 
 function DealContainer({apiCall, changePage, pageNum}) {
   const [deals, setDeals] = useState([]);
@@ -8,6 +9,9 @@ function DealContainer({apiCall, changePage, pageNum}) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  let isDeal
+  (apiCall.slice(35, 40).includes("deal")) ? isDeal = true : isDeal = false 
+  
   var requestOptions = {
     method: 'GET',
     redirect: 'follow'
@@ -24,11 +28,10 @@ function DealContainer({apiCall, changePage, pageNum}) {
         return response.json();
       })
       .then((data) => {
-        const filteredDeals = data.filter(deal => parseFloat(deal.savings) >= 80);
         setDeals(data);
       })
       .then(
-        fetch("https://www.cheapshark.com/api/1.0/stores", requestOptions)
+         isDeal && (fetch("https://www.cheapshark.com/api/1.0/stores", requestOptions)
         .then(response => {
           if (!response.ok) {
             throw new Error("Failed to fetch deals");
@@ -43,7 +46,11 @@ function DealContainer({apiCall, changePage, pageNum}) {
           setError(error.message);
           setLoading(false);
         })
-        )
+      ))
+        .then((data) => {
+          setStores(data)
+          setLoading(false)
+        })
   }, [apiCall]);
 
 
@@ -56,12 +63,13 @@ function DealContainer({apiCall, changePage, pageNum}) {
               <h1>Discover all current steam deals</h1>
               <div>
                 <button className='pageBtn' onClick={()=>(changePage(-1))}>&#8592;</button>
-                <span>{pageNum}</span>
+                <span>{pageNum + 1}</span>
                 <button className='pageBtn' onClick={()=>(changePage(1))}>&#8594;</button>
               </div>
             </div>
             <div id="deals">
-                {deals.map((deal)=>(
+              {isDeal ? (
+                deals.map((deal)=>(
                     <Deal 
                     key={deal.dealID}
                     dealID={deal.dealID}
@@ -73,13 +81,23 @@ function DealContainer({apiCall, changePage, pageNum}) {
                     originalPrice={deal.normalPrice}
                     ratingCount={deal.steamRatingCount}
                     storeId={deal.storeID}
-                    storeLogo={stores.find((store) => store.storeID == deal.storeID).images.banner}
+                    // storeLogo={stores.find((store) => store.storeID == deal.storeID).images.banner}
                     />
-                ))}
-            </div>
+                ))) : (
+                  deals.map((game)=>(
+                    <Game 
+                    dealID={game.cheapestDealID}
+                    title={game.external}
+                    thumb={game.thumb}
+                    salePrice={game.cheapest}
+                    />
+                  ))
+                )
+              }
+            </div> 
             <div className='marginTop marginBottom flexContainer'>
               <button className='pageBtn' onClick={()=>(changePage(-1))}>&#8592;</button>
-              <span>{pageNum}</span>
+              <span>{pageNum + 1}</span>
               <button className='pageBtn' onClick={()=>(changePage(1))}>&#8594;</button>
             </div>
         </div>

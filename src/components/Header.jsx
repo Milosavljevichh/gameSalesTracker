@@ -1,8 +1,9 @@
 import "./../styles/header.css"
 import FilterHeader from "./FilterHeader";
+import SearchBar from "./SearchBar";
 import { useState } from "react";
 
-function Header ({changeFilter}) {
+function Header ({changeFilter, handleSearch}) {
 
     const [showFilters, setShowFilters] = useState(false)
 
@@ -10,7 +11,7 @@ function Header ({changeFilter}) {
         <>
         <header>
             <h1>Sales Tracker</h1>
-            <input type="search" id="titleSearch" placeholder="Search title..." />
+            <SearchBar handleSearch={handleSearch} />
             <div className="flexContainer">
                 <button className="mediumFont" onClick={() => setShowFilters(!showFilters)}>Filter</button>
                 <div>
