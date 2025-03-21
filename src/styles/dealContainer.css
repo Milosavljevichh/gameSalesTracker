@@ -32,7 +32,7 @@
     padding: 10px 26px;
     border: 3px solid var(--light-color);
     background-color: #ccc2b63a;
-    width: fit-content;
+    /* width: fit-content; */
     min-width: 26vw;
     border-radius: 12px;
     transition: all 0.4s;
@@ -75,7 +75,7 @@
 }
 
 .title{
-    max-width: 90%;
+    max-width: 100%;
     margin-bottom: 16px;
 }
 

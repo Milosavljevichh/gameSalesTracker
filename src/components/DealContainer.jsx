@@ -8,18 +8,22 @@ function DealContainer({apiCall, changePage, pageNum}) {
   const [stores, setStores] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isDeal, setIsDeal] = useState(false)
 
-  let isDeal
-  (apiCall.slice(35, 40).includes("deals")) ? isDeal = true : isDeal = false 
-  
-  var requestOptions = {
+  const requestOptions = {
     method: 'GET',
     redirect: 'follow'
   };
-//odvojiti u utlitiy sve api calls
-  useEffect(() => {
-    setLoading(true)
 
+  // Check if 'apiCall' includes "deals" and set the isDeal state accordingly
+  useEffect(() => {
+    setIsDeal(apiCall.slice(35, 40).includes("deals"));
+  }, [apiCall]);
+
+  // Main API Call for Deals
+  useEffect(() => {
+    console.log('usao')
+    setLoading(true);
     fetch(apiCall, requestOptions)
       .then((response) => {
         if (!response.ok) {
@@ -29,29 +33,36 @@ function DealContainer({apiCall, changePage, pageNum}) {
       })
       .then((data) => {
         setDeals(data);
+        if (!isDeal) {
+          setLoading(false);
+        }
       })
-      .then(
-         isDeal && (fetch("https://www.cheapshark.com/api/1.0/stores", requestOptions)
-        .then(response => {
+      .catch((error) => {
+        setError(error.message);
+        setLoading(false);
+      });
+  }, [apiCall]);
+
+  // Fetch stores if `isDeal` is true
+  useEffect(() => {
+    if (isDeal) {
+      fetch("https://www.cheapshark.com/api/1.0/stores", requestOptions)
+        .then((response) => {
           if (!response.ok) {
-            throw new Error("Failed to fetch deals");
+            throw new Error("Failed to fetch stores");
           }
           return response.json();
         })
         .then((data) => {
-          setStores(data)
-          setLoading(false)
+          setStores(data);
+          setLoading(false);
         })
         .catch((error) => {
           setError(error.message);
           setLoading(false);
-        })
-      ))
-        .then((data) => {
-          setStores(data)
-          setLoading(false)
-        })
-  }, [apiCall]);
+        });
+    }
+  }, [isDeal, apiCall]);  // Run when `isDeal` changes
 
 
   if (loading) return <div className="loader"></div>;
@@ -69,7 +80,9 @@ function DealContainer({apiCall, changePage, pageNum}) {
             </div>
             <div id="deals">
               {isDeal ? (
-                deals.map((deal)=>(
+                deals.map((deal)=>{
+                  const store = stores.find((store) => store.storeID === deal.storeID);
+                  return (
                     <Deal 
                     key={deal.dealID}
                     dealID={deal.dealID}
@@ -81,10 +94,9 @@ function DealContainer({apiCall, changePage, pageNum}) {
                     originalPrice={deal.normalPrice}
                     ratingCount={deal.steamRatingCount}
                     storeId={deal.storeID}
-                    // storeLogo={stores.find((store) => store.storeID == deal.storeID).images.banner}
-                    storeName={stores.find((store)=>store.storeID == deal.storeID).storeName}
+                    storeName={store ? store.storeName : "Unknown Store"}
                     />
-                ))) : (
+                  )})) : (
                   deals.map((game)=>(
                     <Game 
                     dealID={game.cheapestDealID}
