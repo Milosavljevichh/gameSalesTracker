@@ -1,6 +1,6 @@
 // App.jsx
 import React, { useEffect, useState } from "react";
-import { ThemeProvider, useTheme } from "./themeContext"  // Import ThemeProvider and useTheme hook
+import { ThemeProvider, useTheme } from "./ThemeContext"  // Import ThemeProvider and useTheme hook
 import Header from "./Header";
 import DealContainer from "./DealContainer";
 
