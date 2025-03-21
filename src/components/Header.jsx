@@ -13,6 +13,7 @@ function Header ({changeFilter, handleSearch, isDeal}) {
             <h1>Sales Tracker</h1>
             <SearchBar handleSearch={handleSearch} />
             <div className="flexContainer">
+                <button className="mediumFont">Theme</button>
                 <button disabled={!isDeal} className="mediumFont" onClick={() => setShowFilters(!showFilters)}>Filter</button>
                 <div>
                     <input disabled={!isDeal} type="checkbox" name="onSale" id="onSale" defaultChecked onChange={(e) => (changeFilter("sale"))} />

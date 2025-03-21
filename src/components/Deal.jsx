@@ -23,9 +23,9 @@ function Deal({dealID, title, ratingText, thumb, savings, salePrice, originalPri
                 </div>
                 <div className="textContent">
                     <div>
-                        <p>Steam Rating:  <span className="accentColor">{ratingText ? ratingText : "Not Available"}</span></p>
-                        <p>Rating Count: <span className="accentColor">{ratingCount}</span></p>
-                        <p>Store: <span className="accentColor">{storeName}</span></p>
+                        <p>Steam Rating:  <span className="defaultAccentColor">{ratingText ? ratingText : "Not Available"}</span></p>
+                        <p>Rating Count: <span className="defaultAccentColor">{ratingCount}</span></p>
+                        <p>Store: <span className="defaultAccentColor">{storeName}</span></p>
                     </div>
                     <div className="tag">
                         <h2 className="saleTag">-{Math.trunc(savings)}%</h2>

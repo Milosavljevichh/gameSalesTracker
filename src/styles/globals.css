@@ -58,8 +58,8 @@
     margin-bottom: 16px;
   }
 
-  .accentColor{
-    color: #ffbe74;
+  .defaultAccentColor{
+    color: var(--secondary-color);
   }
 
   .mediumFont {
