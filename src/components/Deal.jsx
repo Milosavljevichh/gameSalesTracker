@@ -1,4 +1,4 @@
-function Deal({dealID, title, ratingText, thumb, savings, salePrice, originalPrice,ratingCount, storeId, storeLogo}) {
+function Deal({dealID, title, ratingText, thumb, savings, salePrice, originalPrice,ratingCount, storeId, storeLogo, storeName}) {
 
     let steamId = "1"
     
@@ -25,17 +25,16 @@ function Deal({dealID, title, ratingText, thumb, savings, salePrice, originalPri
                     <div>
                         <p>Steam Rating:  <span className="accentColor">{ratingText ? ratingText : "Not Available"}</span></p>
                         <p>Rating Count: <span className="accentColor">{ratingCount}</span></p>
+                        <p>Store: <span className="accentColor">{storeName}</span></p>
                     </div>
-                <div className="idkContainer">
                     <div className="tag">
                         <h2 className="saleTag">-{Math.trunc(savings)}%</h2>
                         <h3 className="priceTag">{salePrice}$</h3>
                         <h5 className="originalPrice">{originalPrice}$</h5>
                     </div>
-                    {/* <img className="logo" src={"https://www.cheapshark.com"+storeLogo} alt="store" /> */}
-                </div>
-
-
+                {/* <div className="idkContainer">
+                    <img className="logo" src={"https://www.cheapshark.com"+storeLogo} alt="store" />
+                </div> */}
                 </div>
             </div>
             </a>

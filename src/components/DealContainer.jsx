@@ -10,7 +10,7 @@ function DealContainer({apiCall, changePage, pageNum}) {
   const [error, setError] = useState(null);
 
   let isDeal
-  (apiCall.slice(35, 40).includes("deal")) ? isDeal = true : isDeal = false 
+  (apiCall.slice(35, 40).includes("deals")) ? isDeal = true : isDeal = false 
   
   var requestOptions = {
     method: 'GET',
@@ -82,6 +82,7 @@ function DealContainer({apiCall, changePage, pageNum}) {
                     ratingCount={deal.steamRatingCount}
                     storeId={deal.storeID}
                     // storeLogo={stores.find((store) => store.storeID == deal.storeID).images.banner}
+                    storeName={stores.find((store)=>store.storeID == deal.storeID).storeName}
                     />
                 ))) : (
                   deals.map((game)=>(
