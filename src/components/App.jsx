@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./Header";
 import DealContainer from "./DealContainer";
 
@@ -23,6 +23,17 @@ function App() {
     const [isOnSale, setIsOnSale] = useState(true)
     const [currentPage, setCurrentPage] = useState(0)
     const [searchTerm, setSearchTerm] = useState("")
+    const [isDeal, setIsDeal] = useState(false)
+    const [modifiedApiCall, setModifiedApiCall] = useState("")
+
+      // Check if 'apiCall' includes "deals" and set the isDeal state accordingly
+      useEffect(() => {
+        setIsDeal(modifiedApiCall.slice(35, 40).includes("deals"));
+      }, [modifiedApiCall]);
+
+      useEffect(()=>{
+        setModifiedApiCall(createApiCall())
+      }, [filterBy,filterSort,isOnSale,currentPage,searchTerm])
 
     function changeFilter (filter) {
         
@@ -60,12 +71,12 @@ function App() {
     function handleSearch(term) {
         setSearchTerm(term);
     }
-    
+
     return (
         <>
-            <Header changeFilter={changeFilter} handleSearch={handleSearch} />
+            <Header changeFilter={changeFilter} handleSearch={handleSearch} isDeal={isDeal} />
             <main>
-                <DealContainer apiCall={createApiCall()} changePage={changePage} pageNum={currentPage} />
+                <DealContainer apiCall={createApiCall()} changePage={changePage} pageNum={currentPage} isDeal={isDeal} />
             </main>
         </>
     )

@@ -3,22 +3,17 @@ import "../styles/dealContainer.css"
 import { useState, useEffect } from 'react';
 import Game from './Game';
 
-function DealContainer({apiCall, changePage, pageNum}) {
+function DealContainer({apiCall, changePage, pageNum, isDeal}) {
   const [deals, setDeals] = useState([]);
   const [stores, setStores] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [isDeal, setIsDeal] = useState(false)
 
   const requestOptions = {
     method: 'GET',
     redirect: 'follow'
   };
 
-  // Check if 'apiCall' includes "deals" and set the isDeal state accordingly
-  useEffect(() => {
-    setIsDeal(apiCall.slice(35, 40).includes("deals"));
-  }, [apiCall]);
 
   // Main API Call for Deals
   useEffect(() => {

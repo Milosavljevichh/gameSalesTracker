@@ -29,6 +29,11 @@
     border-radius: 8px;
   }
 
+  button:disabled {
+    background-color: grey;
+    border: grey 1px solid;
+  }
+
   button:hover{
     cursor: pointer;
   }
