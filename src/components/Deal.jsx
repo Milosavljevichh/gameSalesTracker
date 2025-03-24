@@ -28,7 +28,7 @@ function Deal({dealID, title, ratingText, thumb, savings, salePrice, originalPri
 
     const steamId = "1"
     
-    let newThumb = isMobile ? resizeThumb(thumb.lastIndexOf("/"), "/capsule_184x69.jpg") : checkForSteamThumb()
+    let newThumb = isMobile ? resizeThumb(thumb.lastIndexOf("/"), "/capsule_184x69.jpg") : isTablet ? resizeThumb(thumb.lastIndexOf("/"), "/capsule_231x87.jpg") : checkForSteamThumb()
     
     return (
         

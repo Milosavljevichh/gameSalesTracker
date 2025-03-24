@@ -28,3 +28,26 @@
     border: 1.5px solid var(--secondary-color);
     background-color: var(--secondary-color);
 }
+  
+
+@media (max-width: 768px) {
+    .thumb {
+        border-radius: 8px;
+        width: 184px;
+        height: 69px;
+    }
+    .gameCard {
+        padding: 24px 12px;
+        min-width: 87%;
+    }
+  }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .thumb {
+        border-radius: 8px;
+        width: 231px;
+        height: 87px;
+    }
+    .gameCard {
+        min-width: 80%;
+    }
+  }
