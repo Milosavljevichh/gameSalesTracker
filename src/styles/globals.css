@@ -27,10 +27,6 @@
     font-family: Kanit;
   }
 
-  html, body {
-    width: 100vw;
-  }
-
   button {
     padding: 5px 16px;
     background-color: transparent;
