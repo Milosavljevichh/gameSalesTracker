@@ -30,3 +30,26 @@ header, .header {
   #titleSearch::placeholder {
     color: #ffffff98;
   }
+  @media (max-width: 768px) {
+    header {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 22px;
+    }
+    .header {
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 22px;
+    }
+    .header div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .header:last-child {
+      width: 100%;
+    }
+    .header div select {
+      margin-left: 10px;
+    }
+  }

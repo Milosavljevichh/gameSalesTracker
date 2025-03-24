@@ -1,14 +1,34 @@
-function Deal({dealID, title, ratingText, thumb, savings, salePrice, originalPrice,ratingCount, storeId, storeLogo, storeName}) {
+import { useState, useEffect } from "react";
 
-    let steamId = "1"
-    
-    let newThumb = storeId == steamId
-        ? resizeThumb(thumb.lastIndexOf("/"), "/header.jpg")
-        : thumb; 
+function Deal({dealID, title, ratingText, thumb, savings, salePrice, originalPrice,ratingCount, storeId, storeLogo, storeName}) {
+    const [isMobile, setIsMobile] = useState(() => window.innerWidth <= 768);
+    const [isTablet, setIsTablet] = useState(() => window.innerWidth > 768 && window.innerWidth <= 1024);
+
+    useEffect(() => {
+    const checkScreenSize = () => {
+        const width = window.innerWidth;
+        setIsMobile(width <= 768);
+        setIsTablet(width > 768 && width <= 1024);
+    };
+
+    window.addEventListener("resize", checkScreenSize);
+
+    return () => window.removeEventListener("resize", checkScreenSize);
+    }, []);
 
     function resizeThumb(pos, size) {
         return thumb.slice(0, pos) + size
     }
+
+    function checkForSteamThumb() {
+        return storeId == steamId
+        ? resizeThumb(thumb.lastIndexOf("/"), "/header.jpg")
+        : thumb; 
+    }
+
+    const steamId = "1"
+    
+    let newThumb = isMobile ? resizeThumb(thumb.lastIndexOf("/"), "/capsule_184x69.jpg") : checkForSteamThumb()
     
     return (
         

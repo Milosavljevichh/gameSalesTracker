@@ -65,7 +65,7 @@ function DealContainer({apiCall, changePage, pageNum, isDeal}) {
 
     return (
         <div id='dealContainer'>
-            <div className='flexContainer justifyBetween'>
+            <div id='headerContainer' className='flexContainer justifyBetween'>
               <h1>Discover all current steam deals</h1>
               <div>
                 <button className='pageBtn' onClick={()=>(changePage(-1))}>&#8592;</button>

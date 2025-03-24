@@ -11,10 +11,6 @@
 }
 
 #deals{
-    /* display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap; */
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
@@ -137,4 +133,38 @@
     border-radius: 30%;
     padding: 3.5px 10px;
     margin: 0 10px;
+  }
+
+  
+@media (max-width: 768px) {
+
+    #deals{
+        grid-template-columns: 1fr;
+    }
+    .thumb {
+        border-radius: 8px;
+        width: 184px;
+        height: 69px;
+    }
+    .textContent{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .saleTag{
+        margin-left: 33px;
+    }
+    .dealCard {
+        padding: 24px 12px;
+    }
+    #headerContainer{
+        flex-direction: column;
+    }
+    #headerContainer h1 {
+        font-size: 1.75rem;
+        text-align: center;
+    }
   }
