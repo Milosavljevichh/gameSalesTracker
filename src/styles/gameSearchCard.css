@@ -1,10 +1,9 @@
 .gameCard{
-    margin: 16px 8px;
+    margin: 16px auto;
     padding: 16px 26px;
     border: 3px solid var(--light-color);
     background-color: #ccc2b63a;
     width: fit-content;
-    min-width: 26vw;
     border-radius: 12px;
     transition: all 0.4s;
 }

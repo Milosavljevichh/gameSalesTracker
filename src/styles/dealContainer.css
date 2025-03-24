@@ -12,7 +12,7 @@
 
 #deals{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(430px, 1fr));
 }
 
 #deals a {
@@ -29,7 +29,6 @@
     border: 3px solid var(--light-color);
     background-color: #ccc2b63a;
     /* width: fit-content; */
-    min-width: 26vw;
     border-radius: 12px;
     transition: all 0.4s;
 }
