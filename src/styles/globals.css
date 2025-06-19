@@ -27,6 +27,18 @@
     font-family: Kanit;
   }
 
+  main {
+    position: relative;
+  }
+
+  main section{
+    position: absolute;
+    right: 0;
+    top: 10vh;
+    box-sizing: border-box;
+    width: 80vw;
+  }
+
   button {
     padding: 5px 16px;
     background-color: transparent;

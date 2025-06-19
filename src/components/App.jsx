@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { ThemeProvider, useTheme } from "./ThemeContext"  // Import ThemeProvider and useTheme hook
 import Header from "./Header";
 import DealContainer from "./DealContainer";
+import Drawer from "./Drawer";
 
 function App() {
   const defaultApiCall = `https://www.cheapshark.com/api/1.0/`;
@@ -91,8 +92,11 @@ function AppContent({ changeFilter, handleSearch, isDeal, createApiCall, changeP
   return (
     <>
       <Header changeFilter={changeFilter} handleSearch={handleSearch} isDeal={isDeal} toggleTheme={toggleTheme} />
+      <Drawer />
       <main>
+        <section>
         <DealContainer apiCall={createApiCall()} changePage={changePage} pageNum={currentPage} isDeal={isDeal} />
+        </section>
       </main>
     </>
   );
