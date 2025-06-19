@@ -72,7 +72,7 @@ function App() {
   }
 
   return (
-    <ThemeProvider>  {/* Wrap the app with ThemeProvider */}
+    <ThemeProvider>
       <AppContent
         changeFilter={changeFilter}
         handleSearch={handleSearch}

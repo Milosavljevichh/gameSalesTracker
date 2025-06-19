@@ -17,7 +17,6 @@ function DealContainer({apiCall, changePage, pageNum, isDeal}) {
 
   // Main API Call for Deals
   useEffect(() => {
-    console.log('usao')
     setLoading(true);
     fetch(apiCall, requestOptions)
       .then((response) => {
