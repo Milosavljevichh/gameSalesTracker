@@ -6,3 +6,46 @@
     height: 100vh;
     background-color: #151515;
 }
+
+#drawer ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 24px;
+}
+
+#drawer h4 {
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#drawer li {
+  margin-bottom: 10px;
+}
+
+#drawer button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+#drawer button:hover {
+  color: #999;
+}
+
+#drawer .emoji {
+  width: 20px;
+  display: inline-block;
+  text-align: center;
+}
+
+#drawer ul:not(:first-child) {
+  border-top: 1px solid #555;
+  padding-top: 16px;
+}
